@@ -17,8 +17,8 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 250px;
-  height: 250px;
+  width: 270px;
+  height: 270px;
   margin: 20px;
   padding: 20px;
   background-color: ${Colors.white};
@@ -39,7 +39,7 @@ const Name = styled.div`
 `;
 
 const Image = styled.img`
-  height: 120px;
+  height: 180px;
   width: auto;
 `;
 
