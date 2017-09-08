@@ -1,6 +1,8 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
+import Colors from '../consts/colors';
+
 const Loader = () => (
   <LoaderContainer>
     <Spinner />
@@ -28,7 +30,7 @@ const Spinner = styled.div`
   width: 100%;
   height: 100%;
   border: 5px solid rgba(0, 0, 0, 0.25);
-  border-top: 5px solid #fdc22a;
+  border-top: 5px solid ${Colors.themeColor};
   border-radius: 50%;
   animation: ${rotate} 1s infinite ease;
 `;
