@@ -1,10 +1,11 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
+import { ifProp } from 'styled-tools';
 
 import Colors from '../consts/colors';
 
-const Loader = () => (
-  <LoaderContainer>
+const Loader = ({ initial }) => (
+  <LoaderContainer initial={initial}>
     <Spinner />
   </LoaderContainer>
 );
@@ -12,12 +13,14 @@ const Loader = () => (
 export default Loader;
 
 const LoaderContainer = styled.div`
+  position: ${ifProp('initial', 'static', 'absolute')};
+  bottom: ${ifProp('initial', 'initial', '10px')};
   width: 50px;
   height: 50px;
 `;
 
 const rotate = keyframes`
-    from {
+  from {
     transform: rotate(0deg);
   }
 
@@ -27,10 +30,10 @@ const rotate = keyframes`
 `;
 
 const Spinner = styled.div`
-  width: 100%;
-  height: 100%;
+  width: 50px;
+  height: 50px;
   border: 5px solid rgba(0, 0, 0, 0.25);
   border-top: 5px solid ${Colors.themeColor};
   border-radius: 50%;
-  animation: ${rotate} 1s infinite ease;
+  animation: ${rotate} 0.75s infinite ease;
 `;
