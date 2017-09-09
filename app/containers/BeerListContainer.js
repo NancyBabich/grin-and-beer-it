@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import _ from 'underscore';
 
 import BeerList from '../components/BeerList';
 
@@ -49,7 +50,7 @@ export default class BeerListContainer extends Component {
   };
 
   fetchMoreBeers = () => {
-    this.setState({ page: this.state.page + 1 }, () => this.fetchBeers());
+    this.setState({ page: this.state.page + 1 }, this.fetchBeers());
   };
 
   onScroll = () => {
