@@ -19,14 +19,8 @@ const BeerList = ({ beers, fetchMoreBeers, isAllDisplayed, isLoading }) => {
   return (
     <Container>
       {isLoading && <Loader initial />}
-      {isLoading && cards}
-      <button
-        onClick={fetchMoreBeers}
-
-        //this.fetchBeers(this.state.page + 1)
-      >
-        Drink More!
-      </button>
+      {!isLoading && cards}
+      <button onClick={fetchMoreBeers}>Drink More!</button>
       {isAllDisplayed && (
         <Message text="Sadly, we have no more beers to show you" />
       )}

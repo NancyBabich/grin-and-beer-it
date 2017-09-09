@@ -15,7 +15,7 @@ export default class BeerListContainer extends Component {
   }
 
   componentDidMount() {
-    //this.fetchBeers();
+    this.fetchBeers();
   }
 
   fetchBeers = () => {
