@@ -15,8 +15,19 @@ export default class BeerListContainer extends Component {
   }
 
   componentDidMount() {
+    this.distributeEventListeners('add');
     this.fetchBeers();
   }
+
+  componentWillUnmount() {
+    this.distributeEventListeners('remove');
+  }
+
+  distributeEventListeners = action => {
+    action === 'add'
+      ? window.addEventListener('scroll', this.onScroll, false)
+      : window.removeEventListener('scroll', this.onScroll, false);
+  };
 
   fetchBeers = () => {
     const url = `https://api.punkapi.com/v2/beers?page=${this.state
@@ -39,6 +50,15 @@ export default class BeerListContainer extends Component {
 
   fetchMoreBeers = () => {
     this.setState({ page: this.state.page + 1 }, () => this.fetchBeers());
+  };
+
+  onScroll = () => {
+    if (
+      window.innerHeight + window.scrollY >=
+      document.body.offsetHeight - 500
+    ) {
+      this.fetchMoreBeers();
+    }
   };
 
   render() {
