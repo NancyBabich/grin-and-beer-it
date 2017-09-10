@@ -7,12 +7,15 @@ export default class ModalContainer extends Component {
     super(props);
     this.state = {
       abv: null,
-      brewerTips: '',
+      brewersTips: '',
       description: '',
+      ebc: null,
       ibu: null,
       imgSrc: '',
-      isLoading: true,
+      isLoadingBeer: true,
+      isLoadingSimilarBeers: true,
       name: '',
+      similarBeers: [],
       tagline: ''
     };
   }
@@ -21,7 +24,7 @@ export default class ModalContainer extends Component {
     this.fetchBeer();
   }
 
-  fetchBeer = () => {
+  fetchBeers = () => {
     const beerId = this.props.match.params.beerId;
     const url = `https://api.punkapi.com/v2/beers/${beerId}`;
 
@@ -29,16 +32,39 @@ export default class ModalContainer extends Component {
       .then(res => res.json())
       .then(beer => {
         if (beer.length && beer[0]) {
-          const { abv, description, ibu, name, tagline } = beer[0];
+          const { abv, description, ebc, ibu, name, tagline } = beer[0];
+          this.setState(
+            {
+              abv,
+              description,
+              ebc,
+              ibu,
+              name,
+              tagline,
+              brewersTips: beer[0].brewers_tips,
+              imgSrc: beer[0].image_url,
+              isLoadingBeer: false
+            },
+            this.fetchSimilarBeers(this.state.abv)
+          );
+        }
+      });
+    // .catch((err) => this.setState({isError: true}))
+  };
+
+  fetchSimilarBeers = abv => {
+    const abvFloor = Math.floor(abv);
+    const url = `https://api.punkapi.com/v2/beers?abv_gt=${abvFloor}&abv_lt=${abvFloor +
+      1}`;
+
+    fetch(url)
+      .then(res => res.json())
+      .then(beers => {
+        if (beers.length) {
+          const similarBeers = beers.slice(0, 3);
           this.setState({
-            abv,
-            description,
-            ibu,
-            name,
-            tagline,
-            brewerTips: beer.brewer_tips,
-            imgSrc: beer.image_url,
-            isLoading: false
+            similarBeers,
+            isLoadingSimilarBeers: false
           });
         }
       });
@@ -48,24 +74,32 @@ export default class ModalContainer extends Component {
   render() {
     const {
       abv,
-      brewerTips,
+      brewersTips,
       description,
+      ebc,
       ibu,
       imgSrc,
       isLoading,
+      isLoadingSimilarBeers,
       name,
+      similarBeers,
       tagline
     } = this.state;
+
+    const isAnyLoading = isLoading && isLoadingSimilarBeers;
 
     return (
       <Modal
         abv={abv}
-        brewerTips={brewerTips}
+        brewersTips={brewersTips}
         description={description}
+        ebc={ebc}
         ibu={ibu}
+        id={this.props.match.params.beerId}
         imgSrc={imgSrc}
-        isLoading={this.state.isLoading}
+        isAnyLoading={isAnyLoading}
         name={name}
+        similarBeers={similarBeers}
         tagline={tagline}
       />
     );

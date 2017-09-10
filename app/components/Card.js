@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import Colors from '../consts/colors';
 
 const Card = ({ beerId, handleCardClick, history, imgSrc, name, tagline }) => (
-  <Link
+  <StyledLink
     to={{
       pathname: `/beers/${beerId}`,
       state: { modal: true }
@@ -17,7 +17,7 @@ const Card = ({ beerId, handleCardClick, history, imgSrc, name, tagline }) => (
       <Name>{name}</Name>
       <Tagline>{tagline}</Tagline>
     </Container>
-  </Link>
+  </StyledLink>
 );
 
 export default withRouter(Card);
@@ -51,6 +51,8 @@ const Image = styled.img`
   height: 180px;
   width: auto;
 `;
+
+const StyledLink = styled(Link)`text-decoration: none;`;
 
 const Tagline = styled.div`
   font-family: 'Nunito';
