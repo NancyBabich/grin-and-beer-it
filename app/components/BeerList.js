@@ -9,7 +9,6 @@ import Colors from '../consts/colors';
 const BeerList = ({
   beers,
   fetchBeers,
-  fetchMoreBeers,
   handleCardClick,
   isAllDisplayed,
   isLoading,

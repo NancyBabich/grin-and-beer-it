@@ -6,7 +6,7 @@ import BeerList from '../components/BeerList';
 export default class BeerListContainer extends Component {
   constructor(props) {
     super(props);
-    //this.fetchBeers = throttle(this.fetchBeers, 300);
+    this.handleScroll = throttle(this.handleScroll, 300);
     this.state = {
       beers: [],
       isAllDisplayed: false,
@@ -16,23 +16,19 @@ export default class BeerListContainer extends Component {
   }
 
   componentDidMount() {
-    //this.distributeEventListeners('add');
+    this.distributeEventListeners('add');
     this.fetchBeers(1);
   }
 
-  // componentDidUpdate() {
+  componentWillUnmount() {
+    this.distributeEventListeners('remove');
+  }
 
-  // }
-
-  // componentWillUnmount() {
-  //   this.distributeEventListeners('remove');
-  // }
-
-  // distributeEventListeners = action => {
-  //   action === 'add'
-  //     ? window.addEventListener('scroll', this.onScroll, false)
-  //     : window.removeEventListener('scroll', this.onScroll, false);
-  // };
+  distributeEventListeners = action => {
+    action === 'add'
+      ? window.addEventListener('scroll', this.handleScroll, false)
+      : window.removeEventListener('scroll', this.handleScroll, false);
+  };
 
   fetchBeers = page => {
     const url = `https://api.punkapi.com/v2/beers?page=${page}&per_page=20`;
@@ -41,14 +37,6 @@ export default class BeerListContainer extends Component {
     fetch(url)
       .then(res => res.json())
       .then(beers => {
-        // POCZĄTEK if (beers.length) {
-        //   this.setState(prevState => ({
-        //     beers: [...prevState.beers, beers][0],
-        //     isLoading: false
-        //   }));
-        // } else {
-        //   this.setState({ isAllDisplayed: true });
-        //  KONIEC }
         console.log('most recent: ' + page);
         page === 1
           ? this.setState({
@@ -65,21 +53,15 @@ export default class BeerListContainer extends Component {
     // .catch((err) => this.setState({isError: true}))
   };
 
-  // fetchMoreBeers = () => {
-  //   !this.state.isLoading &&
-  //     this.setState(prevState => {
-  //       page: prevState.page + 1;
-  //     }, this.fetchBeers(this.state.page + 1));
-  // };
-
   //handleCardClick = (beerId, history) => history.push(`/beers/${beerId}`);
 
-  onScroll = () => {
+  handleScroll = () => {
     if (
-      window.innerHeight + window.scrollY >= document.body.offsetHeight - 500 &&
-      this.state.beers.length
+      window.innerHeight + window.scrollY >= document.body.offsetHeight - 700 &&
+      this.state.beers.length &&
+      !this.state.isLoading
     ) {
-      this.fetchMoreBeers();
+      this.fetchBeers(this.state.page + 1);
     }
   };
 
