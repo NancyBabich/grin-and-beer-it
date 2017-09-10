@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import Colors from '../consts/colors';
 
-const Card = ({ beerId, handleCardClick, history, imgSrc, name, tagline }) => (
+const Card = ({ beerId, imgSrc, name, tagline }) => (
   <StyledLink
     to={{
       pathname: `/beers/${beerId}`,

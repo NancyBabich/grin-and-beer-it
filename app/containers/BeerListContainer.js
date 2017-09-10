@@ -16,13 +16,13 @@ export default class BeerListContainer extends Component {
   }
 
   componentDidMount() {
-    //this.distributeEventListeners('add');
+    this.distributeEventListeners('add');
     this.fetchBeers();
   }
 
-  // componentWillUnmount() {
-  //   this.distributeEventListeners('remove');
-  // }
+  componentWillUnmount() {
+    this.distributeEventListeners('remove');
+  }
 
   distributeEventListeners = action => {
     action === 'add'

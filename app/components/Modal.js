@@ -10,7 +10,6 @@ const Modal = ({
   description,
   ebc,
   ibu,
-  id,
   imgSrc,
   isAnyLoading,
   name,

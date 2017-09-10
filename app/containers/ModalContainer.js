@@ -21,7 +21,7 @@ export default class ModalContainer extends Component {
   }
 
   componentDidMount() {
-    this.fetchBeer();
+    this.fetchBeers();
   }
 
   fetchBeers = () => {
@@ -53,9 +53,9 @@ export default class ModalContainer extends Component {
   };
 
   fetchSimilarBeers = abv => {
-    const abvFloor = Math.floor(abv);
-    const url = `https://api.punkapi.com/v2/beers?abv_gt=${abvFloor}&abv_lt=${abvFloor +
-      1}`;
+    const abvMin = Math.floor(abv);
+    const abvMax = abvMin + 1;
+    const url = `https://api.punkapi.com/v2/beers?abv_gt=${abvMin}&abv_lt=${abvMax}`;
 
     fetch(url)
       .then(res => res.json())
@@ -87,7 +87,7 @@ export default class ModalContainer extends Component {
     } = this.state;
 
     const isAnyLoading = isLoading && isLoadingSimilarBeers;
-
+    !isAnyLoading && console.log(similarBeers);
     return (
       <Modal
         abv={abv}

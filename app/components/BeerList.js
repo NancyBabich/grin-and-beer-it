@@ -6,13 +6,7 @@ import Message from './Message';
 import Card from './Card';
 import Colors from '../consts/colors';
 
-const BeerList = ({
-  beers,
-  fetchMoreBeers,
-  handleCardClick,
-  isAllDisplayed,
-  isLoading
-}) => {
+const BeerList = ({ beers, handleCardClick, isAllDisplayed, isLoading }) => {
   const cards = beers.map(beer => (
     <Card
       beerId={beer.id}
