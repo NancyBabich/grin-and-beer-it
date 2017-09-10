@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import BeerListContainer from './containers/BeerListContainer';
-import Loader from './components/Loader';
+import ModalContainer from './containers/ModalContainer';
 
 export default class ModalSwitch extends Component {
   constructor(props) {
@@ -32,9 +32,10 @@ export default class ModalSwitch extends Component {
       <div>
         <Switch location={isModal ? this.previousLocation : location}>
           <Route exact path="/" component={BeerListContainer} />
-          <Route path="/loader" component={Loader} />
         </Switch>
-        {isModal ? <Route path="/loader" component={Loader} /> : null}
+        {isModal ? (
+          <Route path="/beers/:beerId" component={ModalContainer} />
+        ) : null}
       </div>
     );
   }

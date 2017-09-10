@@ -6,9 +6,17 @@ import Message from './Message';
 import Card from './Card';
 import Colors from '../consts/colors';
 
-const BeerList = ({ beers, fetchMoreBeers, isAllDisplayed, isLoading }) => {
+const BeerList = ({
+  beers,
+  fetchMoreBeers,
+  handleCardClick,
+  isAllDisplayed,
+  isLoading
+}) => {
   const cards = beers.map(beer => (
     <Card
+      beerId={beer.id}
+      handleCardClick={handleCardClick}
       tagline={beer.tagline}
       name={beer.name}
       imgSrc={beer.image_url}
@@ -20,7 +28,6 @@ const BeerList = ({ beers, fetchMoreBeers, isAllDisplayed, isLoading }) => {
     <Container>
       {isLoading && <Loader initial />}
       {!isLoading && cards}
-      <button onClick={fetchMoreBeers}>Drink More!</button>
       {isAllDisplayed && (
         <Message text="Sadly, we have no more beers to show you" />
       )}

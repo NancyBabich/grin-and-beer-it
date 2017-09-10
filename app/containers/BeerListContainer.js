@@ -1,28 +1,28 @@
 import React, { Component } from 'react';
-import _ from 'underscore';
+import { throttle } from 'lodash';
 
 import BeerList from '../components/BeerList';
 
 export default class BeerListContainer extends Component {
   constructor(props) {
     super(props);
+    this.fetchBeers = throttle(this.fetchBeers, 300);
     this.state = {
       beers: [],
       isAllDisplayed: false,
-      //      isError: false,
       isLoading: true,
       page: 1
     };
   }
 
   componentDidMount() {
-    this.distributeEventListeners('add');
+    //this.distributeEventListeners('add');
     this.fetchBeers();
   }
 
-  componentWillUnmount() {
-    this.distributeEventListeners('remove');
-  }
+  // componentWillUnmount() {
+  //   this.distributeEventListeners('remove');
+  // }
 
   distributeEventListeners = action => {
     action === 'add'
@@ -50,13 +50,16 @@ export default class BeerListContainer extends Component {
   };
 
   fetchMoreBeers = () => {
-    this.setState({ page: this.state.page + 1 }, this.fetchBeers());
+    !this.state.isLoading &&
+      this.setState({ page: this.state.page + 1 }, this.fetchBeers());
   };
+
+  handleCardClick = (beerId, history) => history.push(`/beers/${beerId}`);
 
   onScroll = () => {
     if (
-      window.innerHeight + window.scrollY >=
-      document.body.offsetHeight - 500
+      window.innerHeight + window.scrollY >= document.body.offsetHeight - 500 &&
+      this.state.beers.length
     ) {
       this.fetchMoreBeers();
     }
@@ -67,6 +70,7 @@ export default class BeerListContainer extends Component {
       <BeerList
         beers={this.state.beers}
         fetchMoreBeers={this.fetchMoreBeers}
+        handleCardClick={this.handleCardClick}
         isAllDisplayed={this.state.isAllDisplayed}
         isLoading={this.state.isLoading}
       />

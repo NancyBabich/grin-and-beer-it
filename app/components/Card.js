@@ -1,17 +1,26 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
 import styled from 'styled-components';
 
 import Colors from '../consts/colors';
 
-const Card = ({ imgSrc, name, tagline }) => (
-  <Container>
-    <Image src={imgSrc} />
-    <Name>{name}</Name>
-    <Tagline>{tagline}</Tagline>
-  </Container>
+const Card = ({ beerId, handleCardClick, history, imgSrc, name, tagline }) => (
+  <Link
+    to={{
+      pathname: `/beers/${beerId}`,
+      state: { modal: true }
+    }}
+  >
+    <Container>
+      <Image src={imgSrc} />
+      <Name>{name}</Name>
+      <Tagline>{tagline}</Tagline>
+    </Container>
+  </Link>
 );
 
-export default Card;
+export default withRouter(Card);
 
 const Container = styled.div`
   display: flex;
