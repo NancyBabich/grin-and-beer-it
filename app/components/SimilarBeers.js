@@ -7,6 +7,8 @@ const SimilarBeers = ({ similarBeers }) => {
   return <SimilarBeersContainer>{beers}</SimilarBeersContainer>;
 };
 
+export default SimilarBeers;
+
 const SimilarBeersContainer = styled.div`
   width: 100%;
   border: solid 1px yellow;
