@@ -33,6 +33,7 @@ export default class ModalSwitch extends Component {
         <Switch location={isModal ? this.previousLocation : location}>
           <Route exact path="/" component={BeerListContainer} />
         </Switch>
+        <Route path="/beers/:beerId" component={ModalContainer} />
         {isModal ? (
           <Route path="/beers/:beerId" component={ModalContainer} />
         ) : null}
