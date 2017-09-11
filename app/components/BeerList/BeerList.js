@@ -22,8 +22,13 @@ const BeerList = ({ beers, isAllDisplayed, isLoading }) => {
     <Container>
       <Header />
       <BeerListContainer>
-        {isLoading && <Loader initial />}
-        {!isLoading && cards}
+        {isLoading && !beers.length && <Loader initial />}
+        {isLoading && beers.length ? (
+          <LoadingBeerListContainer>
+            {cards} <Loader />
+          </LoadingBeerListContainer>
+        ) : null}
+        {!isLoading ? cards : null}
       </BeerListContainer>
       {isAllDisplayed && (
         <Message text="Sadly, we have no more beers to show you" />
@@ -34,7 +39,13 @@ const BeerList = ({ beers, isAllDisplayed, isLoading }) => {
 
 export default BeerList;
 
+const LoadingBeerListContainer = styled.div`
+  display: flex;
+  width: 100%;
+`;
+
 const BeerListContainer = styled.div`
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
