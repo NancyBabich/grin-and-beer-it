@@ -60,7 +60,14 @@ export default class ModalContainer extends Component {
       .then(res => res.json())
       .then(beers => {
         if (beers.length) {
-          const similarBeers = beers.slice(0, 3);
+          const similarBeers = beers
+            .sort((a, b) => {
+              const diffA = Math.abs(abv - a.abv);
+              const diffB = Math.abs(abv - b.abv);
+              return diffA - diffB;
+            })
+            .slice(0, 3);
+
           this.setState({
             similarBeers,
             isLoadingSimilarBeers: false
