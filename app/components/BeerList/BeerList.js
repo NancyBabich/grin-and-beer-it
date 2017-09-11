@@ -41,9 +41,11 @@ const BeerListContainer = styled.div`
   justify-content: center;
   width: 100%;
   min-height: 100vh;
+  margin-top: 4rem;
 `;
 
 const Container = styled.div`
   width: 100%;
+  padding-top: 6rem;
   background-color: ${Colors.lightGray};
 `;
