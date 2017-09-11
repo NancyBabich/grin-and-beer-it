@@ -58,8 +58,6 @@ const Name = styled.div`
   font-weight: 700;
 `;
 
-const Number = styled.span``;
-
 const Paragraph = styled.div`
   margin-top: 1.5rem;
   line-height: 1.25;
