@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Loader from './Loader';
+import Loader from '../Loader';
 import Message from './Message';
 import Card from './Card';
-import Colors from '../consts/colors';
+import Colors from '../../consts/colors';
 
 const BeerList = ({
   beers,

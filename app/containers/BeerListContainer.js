@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { throttle } from 'lodash';
 
-import BeerList from '../components/BeerList';
+import BeerList from '../components/BeerList/BeerList';
 
 export default class BeerListContainer extends Component {
   constructor(props) {

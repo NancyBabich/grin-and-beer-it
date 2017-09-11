@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Colors from '../consts/colors';
+import Colors from '../../consts/colors';
 import SadFace from './SadFace';
 
 const Message = ({ text }) => (

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Modal from '../components/Modal';
+import Modal from '../components/Modal/Modal';
 
 export default class ModalContainer extends Component {
   constructor(props) {
