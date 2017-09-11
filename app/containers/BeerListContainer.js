@@ -69,11 +69,8 @@ export default class BeerListContainer extends Component {
     return (
       <BeerList
         beers={this.state.beers}
-        fetchBeers={this.fetchBeers}
-        handleCardClick={this.handleCardClick}
         isAllDisplayed={this.state.isAllDisplayed}
         isLoading={this.state.isLoading}
-        page={this.state.page + 1}
       />
     );
   }
