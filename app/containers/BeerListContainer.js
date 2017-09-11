@@ -32,6 +32,10 @@ export default class BeerListContainer extends Component {
 
   fetchBeers = page => {
     const url = `https://api.punkapi.com/v2/beers?page=${page}&per_page=20`;
+    this.setState({
+      isLoading: true
+    });
+
     fetch(url)
       .then(res => res.json())
       .then(beers => {
@@ -54,7 +58,7 @@ export default class BeerListContainer extends Component {
 
   handleScroll = () => {
     if (
-      window.innerHeight + window.scrollY >= document.body.offsetHeight - 700 &&
+      window.innerHeight + window.scrollY >= document.body.offsetHeight &&
       this.state.beers.length &&
       !this.state.isLoading
     ) {
