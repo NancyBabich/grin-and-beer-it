@@ -32,12 +32,9 @@ export default class BeerListContainer extends Component {
 
   fetchBeers = page => {
     const url = `https://api.punkapi.com/v2/beers?page=${page}&per_page=20`;
-    console.log(page);
-    console.log(this.state.page);
     fetch(url)
       .then(res => res.json())
       .then(beers => {
-        console.log('most recent: ' + page);
         page === 1
           ? this.setState({
               beers,

@@ -93,7 +93,7 @@ export default class ModalContainer extends Component {
     } = this.state;
 
     const isAnyLoading = isLoading && isLoadingSimilarBeers;
-    !isAnyLoading && console.log(similarBeers);
+
     return (
       <Modal
         abv={abv}
