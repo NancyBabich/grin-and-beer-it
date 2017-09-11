@@ -27,4 +27,7 @@ const BeersContainer = styled.div`
 
 const Heading = styled.div`font-weight: 700;`;
 
-const SimilarBeersSection = styled.div`width: 100%;`;
+const SimilarBeersSection = styled.div`
+  width: 100%;
+  margin-top: 2rem;
+`;

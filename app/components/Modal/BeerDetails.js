@@ -46,18 +46,21 @@ const BeerDetailsContainer = styled.div`
   flex-direction: column;
 `;
 
-const BrewersTips = styled.div``;
+const BrewersTips = styled.div`margin-top: 1.5rem;`;
 
-const Data = styled.div`display: flex;`;
+const Data = styled.div`
+  display: flex;
+  margin-top: 1.5rem;
+`;
 
-const DataBit = styled.div``;
+const DataBit = styled.div`margin-right: 1rem;`;
 
 const DataType = styled.span`
   font-weight: 700;
   text-transform: uppercase;
 `;
 
-const Description = styled.div``;
+const Description = styled.div`margin-top: 1.5rem;`;
 
 const Heading = styled.div`font-weight: 700;`;
 

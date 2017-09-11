@@ -49,7 +49,7 @@ const BeerInfo = styled.div`
 `;
 
 const ModalCard = styled.div`
-  width: 50%;
+  width: 40%;
   padding: 20px;
   background-color: ${Colors.white};
 `;
