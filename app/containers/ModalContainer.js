@@ -85,14 +85,14 @@ export default class ModalContainer extends Component {
       ebc,
       ibu,
       imgSrc,
-      isLoading,
+      isLoadingBeer,
       isLoadingSimilarBeers,
       name,
       similarBeers,
       tagline
     } = this.state;
 
-    const isAnyLoading = isLoading && isLoadingSimilarBeers;
+    const isAnyLoading = isLoadingBeer && isLoadingSimilarBeers;
 
     return (
       <Modal

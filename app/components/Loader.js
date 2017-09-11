@@ -4,20 +4,9 @@ import { ifProp } from 'styled-tools';
 
 import Colors from '../consts/colors';
 
-const Loader = ({ initial }) => (
-  <LoaderContainer initial={initial}>
-    <Spinner />
-  </LoaderContainer>
-);
+const Loader = ({ initial }) => <Spinner initial={initial} />;
 
 export default Loader;
-
-const LoaderContainer = styled.div`
-  position: ${ifProp('initial', 'static', 'absolute')};
-  bottom: ${ifProp('initial', 'initial', '10px')};
-  width: 50px;
-  height: 50px;
-`;
 
 const rotate = keyframes`
   from {
@@ -30,6 +19,10 @@ const rotate = keyframes`
 `;
 
 const Spinner = styled.div`
+  position: absolute;
+  left: 50%;
+  top: ${ifProp('initial', '50%', 'auto')};
+  bottom: ${ifProp('initial', 'auto', '20px')};
   width: 50px;
   height: 50px;
   border: 5px solid rgba(0, 0, 0, 0.25);
