@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import BeerDetails from './BeerDetails';
+import BeerImage from '../BeerImage';
+import Colors from '../../consts/colors';
 import Loader from '../Loader';
 import SimilarBeers from './SimilarBeers';
 
@@ -19,31 +22,18 @@ const Modal = ({
   <ModalContainer>
     {!isAnyLoading && (
       <ModalCard>
-        <Body>
-          <ImageContainer>
-            <Image src={imgSrc} />
-          </ImageContainer>
-          <InfoContainer>
-            <Name>{name}</Name>
-            <Tagline>{tagline}</Tagline>
-            <Data>
-              <DataBit>
-                <DataType>ibu:</DataType>
-                <Number>{ibu}</Number>
-              </DataBit>
-              <DataBit>
-                <DataType>abv:</DataType>
-                <Number>{abv}</Number>
-              </DataBit>
-              <DataBit>
-                <DataType>ebc:</DataType>
-                <Number>{ebc}</Number>
-              </DataBit>
-            </Data>
-            <Description>{description}</Description>
-            <BrewersTips>{brewersTips}</BrewersTips>
-          </InfoContainer>
-        </Body>
+        <BeerInfo>
+          <BeerImage size="big" imgSrc={imgSrc} padding />
+          <BeerDetails
+            abv={abv}
+            brewersTips={brewersTips}
+            description={description}
+            ebc={ebc}
+            ibu={ibu}
+            name={name}
+            tagline={tagline}
+          />
+        </BeerInfo>
         <SimilarBeers similarBeers={similarBeers} />
       </ModalCard>
     )}
@@ -53,40 +43,15 @@ const Modal = ({
 
 export default Modal;
 
-const Body = styled.div`
+const BeerInfo = styled.div`
   display: flex;
   width: 100%;
-  border: solid 1px yellow;
-`;
-
-const BrewersTips = styled.div``;
-
-const Data = styled.div`display: flex;`;
-
-const DataBit = styled.div``;
-
-const DataType = styled.span`text-transform: uppercase;`;
-
-const Description = styled.div``;
-
-const Image = styled.img`
-  height: 300px;
-  width: auto;
-`;
-
-const ImageContainer = styled.div`width: 25%;`;
-
-const InfoContainer = styled.div`
-  width: 75%;
-  display: flex;
-  flex-direction: column;
 `;
 
 const ModalCard = styled.div`
-  width: 70%;
-  height: 80%;
+  width: 50%;
   padding: 20px;
-  background-color: #ffffff;
+  background-color: ${Colors.white};
 `;
 
 const ModalContainer = styled.div`
@@ -101,10 +66,6 @@ const ModalContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: 'Nunito';
+  color: ${Colors.darkGray};
 `;
-
-const Name = styled.div``;
-
-const Number = styled.span``;
-
-const Tagline = styled.div``;

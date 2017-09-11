@@ -1,15 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const SimilarBeers = ({ similarBeers }) => {
-  const beers = similarBeers.map(beer => <div key={beer.id}>{beer.id}</div>);
+import SimilarBeerCard from './SimilarBeerCard';
 
-  return <SimilarBeersContainer>{beers}</SimilarBeersContainer>;
+const SimilarBeers = ({ similarBeers }) => {
+  const beers = similarBeers.map(beer => (
+    <SimilarBeerCard imgSrc={beer.image_url} key={beer.id} name={beer.name} />
+  ));
+
+  return (
+    <SimilarBeersSection>
+      <Heading>You might also like:</Heading>
+      <BeersContainer>{beers}</BeersContainer>
+    </SimilarBeersSection>
+  );
 };
 
 export default SimilarBeers;
 
-const SimilarBeersContainer = styled.div`
+const BeersContainer = styled.div`
+  display: flex;
+  justify-content: center;
   width: 100%;
-  border: solid 1px yellow;
+  margin-top: 10px;
 `;
+
+const Heading = styled.div`font-weight: 700;`;
+
+const SimilarBeersSection = styled.div`width: 100%;`;

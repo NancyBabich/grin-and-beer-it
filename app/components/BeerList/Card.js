@@ -4,6 +4,7 @@ import { withRouter } from 'react-router';
 import styled from 'styled-components';
 
 import Colors from '../../consts/colors';
+import BeerImage from '../BeerImage';
 
 const Card = ({ beerId, imgSrc, name, tagline }) => (
   <StyledLink
@@ -13,7 +14,7 @@ const Card = ({ beerId, imgSrc, name, tagline }) => (
     }}
   >
     <Container>
-      <Image src={imgSrc} />
+      <BeerImage size="medium" imgSrc={imgSrc} />
       <Name>{name}</Name>
       <Tagline>{tagline}</Tagline>
     </Container>
@@ -45,11 +46,6 @@ const Name = styled.div`
   font-size: 1.5rem;
   font-weight: 700;
   color: ${Colors.themeColor};
-`;
-
-const Image = styled.img`
-  height: 180px;
-  width: auto;
 `;
 
 const StyledLink = styled(Link)`text-decoration: none;`;
