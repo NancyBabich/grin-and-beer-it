@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import BeerNumbers from './BeerNumbers';
 import Colors from '../../consts/colors';
 import Separator from './Separator';
 
@@ -12,32 +13,36 @@ const BeerDetails = ({
   ibu,
   name,
   tagline
-}) => (
-  <BeerDetailsContainer>
-    <Name>{name}</Name>
-    <Tagline>{tagline}</Tagline>
-    <Separator />
-    <Data>
-      <DataBit>
-        <DataType>ibu: </DataType>
-        <Number>{ibu}</Number>
-      </DataBit>
-      <DataBit>
-        <DataType>abv: </DataType>
-        <Number>{abv}%</Number>
-      </DataBit>
-      <DataBit>
-        <DataType>ebc: </DataType>
-        <Number>{ebc}</Number>
-      </DataBit>
-    </Data>
-    <Description>{description}</Description>
-    <BrewersTips>
-      <Heading>Brewer's Tips</Heading>
-      {brewersTips}
-    </BrewersTips>
-  </BeerDetailsContainer>
-);
+}) => {
+  const beerData = [
+    {
+      type: 'abv',
+      value: abv
+    },
+    {
+      type: 'ebc',
+      value: ebc
+    },
+    {
+      type: 'ibu',
+      value: ibu
+    }
+  ];
+
+  return (
+    <BeerDetailsContainer>
+      <Name>{name}</Name>
+      <Tagline>{tagline}</Tagline>
+      <Separator />
+      <BeerNumbers beerData={beerData} />
+      <Paragraph>{description}</Paragraph>
+      <Paragraph>
+        <Heading>Brewer's Tips</Heading>
+        {brewersTips}
+      </Paragraph>
+    </BeerDetailsContainer>
+  );
+};
 
 export default BeerDetails;
 
@@ -46,29 +51,18 @@ const BeerDetailsContainer = styled.div`
   flex-direction: column;
 `;
 
-const BrewersTips = styled.div`margin-top: 1.5rem;`;
-
-const Data = styled.div`
-  display: flex;
-  margin-top: 1.5rem;
-`;
-
-const DataBit = styled.div`margin-right: 1rem;`;
-
-const DataType = styled.span`
-  font-weight: 700;
-  text-transform: uppercase;
-`;
-
-const Description = styled.div`margin-top: 1.5rem;`;
-
 const Heading = styled.div`font-weight: 700;`;
 
 const Name = styled.div`
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 700;
 `;
 
 const Number = styled.span``;
+
+const Paragraph = styled.div`
+  margin-top: 1.5rem;
+  line-height: 1.25;
+`;
 
 const Tagline = styled.div`color: ${Colors.gray};`;
