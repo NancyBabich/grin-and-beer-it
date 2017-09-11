@@ -45,7 +45,7 @@ export default class ModalContainer extends Component {
               imgSrc: beer[0].image_url,
               isLoadingBeer: false
             },
-            this.fetchSimilarBeers(this.state.abv)
+            this.fetchSimilarBeers(abv)
           );
         }
       });
@@ -56,7 +56,6 @@ export default class ModalContainer extends Component {
     const abvMin = Math.floor(abv);
     const abvMax = abvMin + 1;
     const url = `https://api.punkapi.com/v2/beers?abv_gt=${abvMin}&abv_lt=${abvMax}`;
-
     fetch(url)
       .then(res => res.json())
       .then(beers => {

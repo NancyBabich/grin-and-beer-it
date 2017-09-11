@@ -70,7 +70,7 @@ const DataType = styled.span`text-transform: uppercase;`;
 const Description = styled.div``;
 
 const Image = styled.img`
-  height: 120px;
+  height: 300px;
   width: auto;
 `;
 
