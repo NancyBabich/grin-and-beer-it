@@ -61,6 +61,7 @@ const Name = styled.div`
 const Paragraph = styled.div`
   margin-top: 1.5rem;
   line-height: 1.25;
+  padding-right: 2rem;
 `;
 
 const Tagline = styled.div`color: ${Colors.gray};`;
