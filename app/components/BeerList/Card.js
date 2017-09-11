@@ -27,8 +27,8 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 270px;
-  height: 270px;
+  width: 300px;
+  height: 300px;
   margin: 20px;
   padding: 20px;
   background-color: ${Colors.white};
@@ -43,7 +43,7 @@ const Container = styled.div`
 const Name = styled.div`
   text-align: center;
   font-family: 'Nunito';
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: ${Colors.themeColor};
 `;
