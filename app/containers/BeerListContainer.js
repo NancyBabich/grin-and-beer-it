@@ -32,29 +32,32 @@ export default class BeerListContainer extends Component {
 
   fetchBeers = page => {
     const url = `https://api.punkapi.com/v2/beers?page=${page}&per_page=20`;
-    this.setState({
-      isLoading: true
-    });
 
-    fetch(url)
-      .then(res => res.json())
-      .then(beers => {
-        page === 1
-          ? this.setState({
-              beers,
-              page,
-              isLoading: false
-            })
-          : this.setState(prevState => ({
-              beers: [...prevState.beers, ...beers],
-              page,
-              isLoading: false
-            }));
+    if (!this.state.isAllDisplayed) {
+      this.setState({
+        isLoading: true
       });
+
+      fetch(url)
+        .then(res => res.json())
+        .then(beers => {
+          page === 1
+            ? this.setState({
+                beers,
+                page,
+                isAllDisplayed: beers.length ? false : true,
+                isLoading: false
+              })
+            : this.setState(prevState => ({
+                beers: [...prevState.beers, ...beers],
+                page,
+                isAllDisplayed: beers.length ? false : true,
+                isLoading: false
+              }));
+        });
+    }
     // .catch((err) => this.setState({isError: true}))
   };
-
-  //handleCardClick = (beerId, history) => history.push(`/beers/${beerId}`);
 
   handleScroll = () => {
     if (
