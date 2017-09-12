@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 import getSimilarBeerCards from '../../helpers/getSimilarBeerCards';
-import SimilarBeerCard from './SimilarBeerCard';
 
 const SimilarBeers = ({ similarBeers }) => (
   <SimilarBeersSection>

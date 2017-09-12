@@ -10,7 +10,7 @@ const Card = ({ beerId, imgSrc, name, tagline }) => (
   <StyledLink
     to={{
       pathname: `/beers/${beerId}`,
-      state: { modal: true }
+      state: { isModal: true }
     }}
   >
     <Container>

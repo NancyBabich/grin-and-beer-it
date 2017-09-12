@@ -32,7 +32,12 @@ export default class ModalSwitch extends Component {
       <div>
         <Switch location={isModal ? this.previousLocation : location}>
           <Route exact path="/" component={BeerListContainer} />
-          <Route path="/beers/:beerId" component={ModalContainer} />
+          <Route
+            path="/beers/:beerId"
+            /*render={(props) => <ModalContainer color="red" {...props} />}*/ component={
+              ModalContainer
+            }
+          />
         </Switch>
         {isModal ? (
           <Route path="/beers/:beerId" component={ModalContainer} />
