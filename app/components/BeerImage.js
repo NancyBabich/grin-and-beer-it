@@ -12,9 +12,9 @@ export default BeerImage;
 
 const Image = styled.img`
   height: ${switchProp('size', {
-    small: '100px',
+    small: '80px',
     medium: '180px',
-    big: '250px'
+    big: '220px'
   })};
   width: auto;
 `;

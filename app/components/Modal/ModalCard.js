@@ -64,11 +64,13 @@ const InnerContainer = styled.div`
   width: 100%;
   height: 100%;
   display: relative;
+  font-size: 0.75rem;
 `;
 
 const CardContainer = styled.div`
   width: 50%;
-  height: ${ifProp('isError', '70%', 'auto')};
+  height: ${ifProp('isError', '70%', '70%')};
+  margin-top: 30px;
   padding: 20px;
   background-color: ${ifProp(
     'isError',

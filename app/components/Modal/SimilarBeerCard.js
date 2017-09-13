@@ -14,8 +14,8 @@ const SimilarBeerCard = ({ imgSrc, name }) => (
 export default SimilarBeerCard;
 
 const SimilarBeerCardContainer = styled.div`
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   display: flex;
   flex-direction: column;
   justify-content: center;

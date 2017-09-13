@@ -24,6 +24,7 @@ class ModalContainer extends Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     this.props.dispatch(toggleModalState(true));
     this.fetchBeers();
   }

@@ -16,16 +16,16 @@ const BeerDetails = ({
 }) => {
   const beerData = [
     {
+      type: 'ibu',
+      value: ibu
+    },
+    {
       type: 'abv',
-      value: abv
+      value: `${abv}%`
     },
     {
       type: 'ebc',
       value: ebc
-    },
-    {
-      type: 'ibu',
-      value: ibu
     }
   ];
 

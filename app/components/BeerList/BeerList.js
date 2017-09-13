@@ -44,7 +44,7 @@ const Container = styled.div`
   position: relative;
   width: 100%;
   min-height: 100vh;
-  height: ${ifProp('isModal', '100vh', 'auto')};
+  height: ${ifProp('isModal', '150vh', 'auto')};
   overflow: ${ifProp('isModal', 'hidden', 'visible')};
   padding-top: 6rem;
   background-color: ${Colors.lightGray};
