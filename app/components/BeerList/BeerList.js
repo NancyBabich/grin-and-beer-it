@@ -22,7 +22,7 @@ const BeerList = ({ beers, isAllDisplayed, isLoading, isModal }) => (
       <BeerCardsContainer>
         {getBeerCards(beers)}
         {isAllDisplayed && (
-          <Message text="Sadly, we have no more beers to show you" />
+          <Message text="Sadly, we have no more beers to show you :-(" />
         )}
       </BeerCardsContainer>
     )}
@@ -36,16 +36,29 @@ const BeerCardsContainer = styled.div`
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  margin-top: 4rem;
+  kl;dkglawidth: 100%;
+  margin-top: 2rem;
+    padding: 0 2rem 7rem 2rem;
+
+    @media screen and (max-width: 950px) {
+    padding: 0 0 7rem 0;
+  }
+
 `;
 
 const Container = styled.div`
   position: relative;
+  display: flex;
+  flex-direction: column;
+
   width: 100%;
   min-height: 100vh;
   height: ${ifProp('isModal', '150vh', 'auto')};
   overflow: ${ifProp('isModal', 'hidden', 'visible')};
-  padding-top: 6rem;
+
   background-color: ${Colors.lightGray};
+
+  @media screen and (max-width: 995px) {
+    text-align: center;
+  }
 `;

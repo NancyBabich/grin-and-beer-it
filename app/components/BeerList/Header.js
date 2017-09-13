@@ -16,7 +16,11 @@ const H1 = styled.h1`
   font-size: 2.5rem;
   text-transform: uppercase;
   color: ${Colors.darkGray};
-  margin-left: 7rem;
+  margin: 7rem 0 0 5rem;
+
+  @media screen and (max-width: 995px) {
+    margin: 7rem 0 0 0;
+  }
 `;
 
 const ColoredText = styled.span`color: ${Colors.themeColor};`;
