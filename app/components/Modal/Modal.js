@@ -19,7 +19,7 @@ const Modal = ({
   tagline
 }) => (
   <ModalContainer>
-    {!isAnyLoading && (
+    {!isAnyLoading ? (
       <ModalCard
         abv={abv}
         brewersTips={brewersTips}
@@ -32,8 +32,9 @@ const Modal = ({
         similarBeers={similarBeers}
         tagline={tagline}
       />
+    ) : (
+      <Loader initial />
     )}
-    {isAnyLoading && <Loader initial />}
   </ModalContainer>
 );
 
