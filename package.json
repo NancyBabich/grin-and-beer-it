@@ -4,10 +4,10 @@
   "description": "A simple app displaying info about various beers",
   "main": "index.js",
   "scripts": {
-    "test": "test",
     "start": "webpack-dev-server --inline --hot --open",
     "prettier": "prettier --single-quote --write ./app/**/*.js",
-    "lint": "eslint **/*.js"
+    "lint": "eslint **/*.js",
+    "test": "mocha **/*.test.js"
   },
   "keywords": [
     "React.js"

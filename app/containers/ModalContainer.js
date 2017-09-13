@@ -61,8 +61,8 @@ class ModalContainer extends Component {
             this.fetchSimilarBeers(abv)
           );
         }
-      });
-    //.catch(err => console.log(err));
+      })
+      .catch(err => console.log(err));
   };
 
   fetchSimilarBeers = abv => {

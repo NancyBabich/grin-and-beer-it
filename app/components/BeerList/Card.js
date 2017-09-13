@@ -9,8 +9,7 @@ import formatString from '../../helpers/formatString';
 const Card = ({ beerId, imgSrc, name, tagline }) => (
   <StyledLink
     to={{
-      pathname: `/beers/${beerId}`,
-      state: { isModal: true }
+      pathname: `/beers/${beerId}`
     }}
   >
     <Container>

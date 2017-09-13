@@ -38,9 +38,9 @@ const BeerCardsContainer = styled.div`
   justify-content: center;
   kl;dkglawidth: 100%;
   margin-top: 2rem;
-    padding: 0 2rem 7rem 2rem;
+  padding: 0 2rem 7rem 2rem;
 
-    @media screen and (max-width: 950px) {
+  @media screen and (max-width: 950px) {
     padding: 0 0 7rem 0;
   }
 
@@ -50,15 +50,21 @@ const Container = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-
   width: 100%;
   min-height: 100vh;
-  height: ${ifProp('isModal', '150vh', 'auto')};
+  height: ${ifProp('isModal', '125vh', 'auto')};
   overflow: ${ifProp('isModal', 'hidden', 'visible')};
-
   background-color: ${Colors.lightGray};
 
   @media screen and (max-width: 995px) {
     text-align: center;
+  }
+
+  @media screen and (max-width: 720px) {
+    height: ${ifProp('isModal', '135vh', 'auto')};
+  }
+
+  @media screen and (max-width: 600px) {
+    height: ${ifProp('isModal', '145vh', 'auto')};
   }
 `;

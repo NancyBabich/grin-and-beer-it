@@ -72,11 +72,29 @@ const Image = styled.img`
     width: auto;
   }
 
+  @media screen and (max-width: 515px) {
+    height: ${switchProp('size', {
+      small: '65px',
+      medium: '110px',
+      big: '200px'
+    })};
+    width: auto;
+  }
+
   @media screen and (max-width: 493px) {
     height: ${switchProp('size', {
-      small: '80px',
+      small: '65px',
       medium: '160px',
-      big: '220px'
+      big: '200px'
+    })};
+    width: auto;
+  }
+
+  @media screen and (max-width: 445px) {
+    height: ${switchProp('size', {
+      small: '55px',
+      medium: '160px',
+      big: '200px'
     })};
     width: auto;
   }
@@ -84,4 +102,12 @@ const Image = styled.img`
 
 const ImageContainer = styled.div`
   padding: ${ifProp('padding', '0 2rem', '0')};
+
+  @media screen and (max-width: 730px) {
+    margin: ${ifProp('padding', '0 3rem 0 0', '0')};
+  }
+
+  @media screen and (max-width: 730px) {
+    margin: ${ifProp('padding', '0 1rem 0 0', '0')};
+  }
 `;

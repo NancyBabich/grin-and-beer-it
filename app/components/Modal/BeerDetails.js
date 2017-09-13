@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import BeerNumbers from './BeerNumbers';
 import Colors from '../../consts/colors';
+import formatString from '../../helpers/formatString';
 import Separator from './Separator';
 
 const BeerDetails = ({
@@ -32,7 +33,7 @@ const BeerDetails = ({
   return (
     <BeerDetailsContainer>
       <Name>{name}</Name>
-      <Tagline>{tagline}</Tagline>
+      <Tagline>{formatString(tagline)}</Tagline>
       <Separator />
       <BeerNumbers beerData={beerData} />
       <Paragraph>{description}</Paragraph>
@@ -51,17 +52,41 @@ const BeerDetailsContainer = styled.div`
   flex-direction: column;
 `;
 
-const Heading = styled.div`font-weight: 700;`;
+const Heading = styled.div`
+  font-weight: 700;
+
+  @media screen and (max-width: 730px) {
+    font-size: 0.9rem;
+  }
+`;
 
 const Name = styled.div`
   font-size: 1.25rem;
   font-weight: 700;
+
+  @media screen and (max-width: 730px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const Paragraph = styled.div`
   margin-top: 1.5rem;
   line-height: 1.25;
   padding-right: 2rem;
+
+  @media screen and (max-width: 730px) {
+    font-size: 0.8rem;
+  }
+
+  @media screen and (max-width: 450px) {
+    padding-right: 0.5rem;
+  }
 `;
 
-const Tagline = styled.div`color: ${Colors.gray};`;
+const Tagline = styled.div`
+  color: ${Colors.gray};
+
+  @media screen and (max-width: 730px) {
+    font-size: 1rem;
+  }
+`;

@@ -52,12 +52,11 @@ const BeerInfo = styled.div`
 `;
 
 const ErrorMessage = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  text-align: center;
   font-size: 1.25rem;
   font-weight: 700;
+  margin-top: 10rem;
+  padding: 0 1rem;
 `;
 
 const InnerContainer = styled.div`
@@ -68,13 +67,23 @@ const InnerContainer = styled.div`
 `;
 
 const CardContainer = styled.div`
-  width: 50%;
-  height: ${ifProp('isError', '70%', '70%')};
-  margin-top: 30px;
-  padding: 20px;
+  width: ${ifProp('isError', '60%', '100%')};
+  height: ${ifProp('isError', '100%', '90%')};
+  margin-top: ${ifProp('isError', '0', '30px')};
+  padding: ${ifProp('isError', '0 0 0 0', '45px 20px 20px 20px')};
   background-color: ${ifProp(
     'isError',
     `${Colors.themeColor}`,
     `${Colors.white}`
   )};
+
+  @media screen and (max-width: 850px) {
+    width: 70%;
+  }
+
+  @media screen and (max-width: 730px) {
+    width: 100%;
+    height: auto;
+    margin-top: 0;
+  }
 `;

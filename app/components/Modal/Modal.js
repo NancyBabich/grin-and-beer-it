@@ -43,7 +43,7 @@ export default Modal;
 const ModalContainer = styled.div`
   position: absolute;
   width: 100%;
-  height: 150vh;
+  height: 125vh;
   left: 0;
   right: 0;
   top: 0;
@@ -53,4 +53,12 @@ const ModalContainer = styled.div`
   justify-content: center;
   font-family: 'Nunito';
   color: ${Colors.darkGray};
+
+  @media screen and (max-width: 720px) {
+    height: 135vh;
+  }
+
+  @media screen and (max-width: 600px) {
+    height: 145vh;
+  }
 `;

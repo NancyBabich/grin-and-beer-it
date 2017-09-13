@@ -55,9 +55,9 @@ class BeerListContainer extends Component {
                 isAllDisplayed: beers.length ? false : true,
                 isLoading: false
               }));
-        });
+        })
+        .catch(err => console.log(err));
     }
-    // .catch((err) => this.setState({isError: true}))
   };
 
   handleScroll = () => {

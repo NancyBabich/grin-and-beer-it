@@ -16,10 +16,22 @@ const BeersContainer = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-top: 10px;
+  margin-top: 1.25rem;
 `;
 
-const Heading = styled.div`font-weight: 700;`;
+const Heading = styled.div`
+  font-weight: 700;
+
+  @media screen and (max-width: 850px) {
+    width: 100%;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 730px) {
+    margin-top: 2.25rem;
+    font-size: 1rem;
+  }
+`;
 
 const SimilarBeersSection = styled.div`
   width: 100%;

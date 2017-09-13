@@ -11,4 +11,5 @@ const StyledDiv = styled.div`
   width: 50px;
   height: 5px;
   background-color: ${Colors.themeColor};
+  margin-top: 10px;
 `;
