@@ -16,6 +16,7 @@ export default class ModalContainer extends Component {
       isLoadingSimilarBeers: true,
       name: '',
       similarBeers: [],
+      status: null,
       tagline: ''
     };
   }
@@ -29,6 +30,10 @@ export default class ModalContainer extends Component {
     const url = `https://api.punkapi.com/v2/beers/${beerId}`;
 
     fetch(url)
+      .then(res => {
+        this.setState({ status: res.status });
+        return res;
+      })
       .then(res => res.json())
       .then(beer => {
         if (beer.length && beer[0]) {
@@ -49,7 +54,7 @@ export default class ModalContainer extends Component {
           );
         }
       });
-    // .catch((err) => this.setState({isError: true}))
+    //.catch(err => console.log(err));
   };
 
   fetchSimilarBeers = abv => {
@@ -73,8 +78,11 @@ export default class ModalContainer extends Component {
             isLoadingSimilarBeers: false
           });
         }
+      })
+      .catch(err => {
+        throw err;
+        this.setState({ isError: true });
       });
-    // .catch((err) => this.setState({isError: true}))
   };
 
   render() {
@@ -89,10 +97,13 @@ export default class ModalContainer extends Component {
       isLoadingSimilarBeers,
       name,
       similarBeers,
+      status,
       tagline
     } = this.state;
 
-    const isAnyLoading = isLoadingBeer && isLoadingSimilarBeers;
+    const isAnyLoading = !status && isLoadingBeer && isLoadingSimilarBeers;
+
+    const isError = status >= 300 && status < 500;
 
     return (
       <Modal
@@ -104,6 +115,7 @@ export default class ModalContainer extends Component {
         id={this.props.match.params.beerId}
         imgSrc={imgSrc}
         isAnyLoading={isAnyLoading}
+        isError={isError}
         name={name}
         similarBeers={similarBeers}
         tagline={tagline}

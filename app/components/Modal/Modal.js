@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { ifProp } from 'styled-tools';
 
 import BeerDetails from './BeerDetails';
 import BeerImage from '../BeerImage';
@@ -15,26 +16,37 @@ const Modal = ({
   ibu,
   imgSrc,
   isAnyLoading,
+  isError,
   name,
   similarBeers,
   tagline
 }) => (
   <ModalContainer>
     {!isAnyLoading && (
-      <ModalCard>
-        <BeerInfo>
-          <BeerImage size="big" imgSrc={imgSrc} padding />
-          <BeerDetails
-            abv={abv}
-            brewersTips={brewersTips}
-            description={description}
-            ebc={ebc}
-            ibu={ibu}
-            name={name}
-            tagline={tagline}
-          />
-        </BeerInfo>
-        <SimilarBeers similarBeers={similarBeers} />
+      <ModalCard isError={isError}>
+        {!isError ? (
+          <InnerContainer>
+            <BeerInfo>
+              <BeerImage size="big" imgSrc={imgSrc} padding />
+              <BeerDetails
+                abv={abv}
+                brewersTips={brewersTips}
+                description={description}
+                ebc={ebc}
+                ibu={ibu}
+                name={name}
+                tagline={tagline}
+              />
+            </BeerInfo>
+            <SimilarBeers similarBeers={similarBeers} />
+          </InnerContainer>
+        ) : (
+          <InnerContainer>
+            <ErrorMessage>
+              We're sorry, but something went wrong :(
+            </ErrorMessage>
+          </InnerContainer>
+        )}
       </ModalCard>
     )}
     {isAnyLoading && <Loader initial />}
@@ -48,11 +60,30 @@ const BeerInfo = styled.div`
   width: 100%;
 `;
 
+const ErrorMessage = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.25rem;
+  font-weight: 700;
+`;
+
+const InnerContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: relative;
+`;
+
 const ModalCard = styled.div`
   width: 50%;
-  height: auto;
+  height: ${ifProp('isError', '70%', 'auto')};
   padding: 20px;
-  background-color: ${Colors.white};
+  background-color: ${ifProp(
+    'isError',
+    `${Colors.themeColor}`,
+    `${Colors.white}`
+  )};
 `;
 
 const ModalContainer = styled.div`
