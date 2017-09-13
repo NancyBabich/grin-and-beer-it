@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { ifProp } from 'styled-tools';
 
 import Colors from '../../consts/colors';
 import getBeerCards from '../../helpers/getBeerCards';
@@ -7,8 +8,8 @@ import Header from './Header';
 import Loader from '../Loader';
 import Message from './Message';
 
-const BeerList = ({ beers, isAllDisplayed, isLoading }) => (
-  <Container>
+const BeerList = ({ beers, isAllDisplayed, isLoading, isModal }) => (
+  <Container isModal={isModal}>
     <Header />
     {isLoading && !beers.length ? <Loader initial /> : null}
     {isLoading && beers.length ? (
@@ -43,6 +44,8 @@ const Container = styled.div`
   position: relative;
   width: 100%;
   min-height: 100vh;
+  height: ${ifProp('isModal', '100vh', 'auto')};
+  overflow: ${ifProp('isModal', 'hidden', 'visible')};
   padding-top: 6rem;
   background-color: ${Colors.lightGray};
 `;

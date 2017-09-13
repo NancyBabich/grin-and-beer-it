@@ -77,6 +77,7 @@ class BeerListContainer extends Component {
         beers={this.state.beers}
         isAllDisplayed={this.state.isAllDisplayed}
         isLoading={this.state.isLoading}
+        isModal={this.props.isModal}
       />
     );
   }
