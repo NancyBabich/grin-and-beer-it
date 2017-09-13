@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { throttle } from 'lodash';
 
 import BeerList from '../components/BeerList/BeerList';
 
-export default class BeerListContainer extends Component {
+class BeerListContainer extends Component {
   constructor(props) {
     super(props);
     this.handleScroll = throttle(this.handleScroll, 300);
@@ -61,6 +62,7 @@ export default class BeerListContainer extends Component {
 
   handleScroll = () => {
     if (
+      !this.props.isModal &&
       window.innerHeight + window.scrollY >= document.body.offsetHeight &&
       this.state.beers.length &&
       !this.state.isLoading
@@ -79,3 +81,9 @@ export default class BeerListContainer extends Component {
     );
   }
 }
+
+export default connect(state => {
+  return {
+    isModal: state.isModal
+  };
+})(BeerListContainer);

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router';
 import styled from 'styled-components';
 
 import Colors from '../../consts/colors';
@@ -21,7 +20,7 @@ const Card = ({ beerId, imgSrc, name, tagline }) => (
   </StyledLink>
 );
 
-export default withRouter(Card);
+export default Card;
 
 const Container = styled.div`
   display: flex;

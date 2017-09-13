@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import Modal from '../components/Modal/Modal';
+import { toggleModalState } from '../actions/index';
 
-export default class ModalContainer extends Component {
+class ModalContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,7 +24,12 @@ export default class ModalContainer extends Component {
   }
 
   componentDidMount() {
+    this.props.dispatch(toggleModalState(true));
     this.fetchBeers();
+  }
+
+  componentWillUnmount() {
+    this.props.dispatch(toggleModalState(false));
   }
 
   fetchBeers = () => {
@@ -123,3 +130,9 @@ export default class ModalContainer extends Component {
     );
   }
 }
+
+export default connect(state => {
+  return {
+    isModal: state.isModal
+  };
+})(ModalContainer);
