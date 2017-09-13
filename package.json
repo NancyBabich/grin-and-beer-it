@@ -15,11 +15,11 @@
   "author": "Maciek Maslowski",
   "license": "ISC",
   "dependencies": {
+    "lodash": "^4.17.4",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-router": "^4.1.2",
     "react-router-dom": "^4.1.2",
-    "lodash": "^4.17.4",
     "styled-components": "^2.1.1",
     "styled-tools": "^0.1.4"
   },
@@ -36,6 +36,7 @@
     "html-webpack-plugin": "^2.26.0",
     "jest": "^21.0.2",
     "prettier": "^1.5.3",
+    "redux": "^3.7.2",
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.2"
   }
