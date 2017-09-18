@@ -1,5 +1,5 @@
 const formatString = string => {
-  const withoutParentheses = string.split('(')[0];
+  const withoutParentheses = string.replace(/ *\([^)]*\) */g, ' ');
   const withoutFinalFullstop = withoutParentheses.split('.')[0];
   const withoutHyphens = withoutFinalFullstop.split('- ')[0];
   const formattedText = withoutHyphens;

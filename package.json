@@ -7,7 +7,7 @@
     "start": "webpack-dev-server --inline --hot --open",
     "prettier": "prettier --single-quote --write ./app/**/*.js",
     "lint": "eslint **/*.js",
-    "test": "mocha **/*.test.js"
+    "test": "mocha --compilers js:babel-core/register app/**/*.test.js"
   },
   "keywords": [
     "React.js"
