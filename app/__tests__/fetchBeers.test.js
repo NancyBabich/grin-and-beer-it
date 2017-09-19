@@ -1,6 +1,6 @@
 import expect from 'expect';
 
-describe('fetchBeers', () => {
+describe('fetchBeers method in BeerListContainer', () => {
   it('Should fetch first 20 beers from API', done => {
     fetch('https://api.punkapi.com/v2/beers?page=1&per_page=20')
       .then(res => res.json())
