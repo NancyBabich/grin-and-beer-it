@@ -4,14 +4,15 @@ import styled from 'styled-components';
 import BurgerMenu from './BurgerMenu';
 import Colors from '../../consts/colors';
 
-const Header = () => (
+const Header = ({ toggleSortingSettings }) => (
   <HeaderContainer>
     <NameContainer>
       <H1>
-        <ColoredText>beer</ColoredText>guru
+        <ColoredText>grin</ColoredText>and<ColoredText>beer</ColoredText>it
       </H1>
     </NameContainer>
-    <BurgerMenu />
+    {/* <BurgerMenu /> */}
+    <ColoredText onClick={toggleSortingSettings}>sort by name</ColoredText>
   </HeaderContainer>
 );
 
@@ -29,12 +30,10 @@ const H1 = styled.h1`
 const HeaderContainer = styled.div`
   width: 100%;
   padding: 7rem 0 0 5rem;
-  
+
   @media screen and (max-width: 995px) {
     padding: 7rem 0 0 0;
   }
 `;
 
-const NameContainer = styled.div`
-  display: inline-block;
-`;
+const NameContainer = styled.div`display: inline-block;`;

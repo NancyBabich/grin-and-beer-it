@@ -12,7 +12,8 @@ class BeerListContainer extends Component {
       beers: [],
       isAllDisplayed: false,
       isLoading: true,
-      page: null
+      page: null,
+      sortByName: false
     };
   }
 
@@ -71,6 +72,12 @@ class BeerListContainer extends Component {
     }
   };
 
+  toggleSortingSettings = () => {
+    this.setState({
+      sortByName: !this.state.sortByName
+    });
+  };
+
   render() {
     return (
       <BeerList
@@ -78,6 +85,8 @@ class BeerListContainer extends Component {
         isAllDisplayed={this.state.isAllDisplayed}
         isLoading={this.state.isLoading}
         isModal={this.props.isModal}
+        sortByName={this.state.sortByName}
+        toggleSortingSettings={this.toggleSortingSettings}
       />
     );
   }

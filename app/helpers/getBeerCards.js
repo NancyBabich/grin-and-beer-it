@@ -2,8 +2,14 @@ import React from 'react';
 
 import Card from '../components/BeerList/Card';
 
-const getBeerCards = beers =>
-  beers.map(beer => (
+const getBeerCards = (beers, sortByName) => {
+  const beersToDisplay = sortByName
+    ? beers.sort((a, b) => {
+        return a.name < b.name ? -1 : 1;
+      })
+    : beers;
+
+  return beersToDisplay.map(beer => (
     <Card
       beerId={beer.id}
       tagline={beer.tagline}
@@ -12,5 +18,6 @@ const getBeerCards = beers =>
       key={beer.id}
     />
   ));
+};
 
 export default getBeerCards;

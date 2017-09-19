@@ -8,19 +8,26 @@ import Header from './Header';
 import Loader from '../Loader';
 import Message from './Message';
 
-const BeerList = ({ beers, isAllDisplayed, isLoading, isModal }) => (
+const BeerList = ({
+  beers,
+  isAllDisplayed,
+  isLoading,
+  isModal,
+  sortByName,
+  toggleSortingSettings
+}) => (
   <Container isModal={isModal}>
-    <Header />
+    <Header toggleSortingSettings={toggleSortingSettings} />
     {isLoading && !beers.length ? <Loader initial /> : null}
     {isLoading && beers.length ? (
       <BeerCardsContainer>
-        {getBeerCards(beers)}
+        {getBeerCards(beers, sortByName)}
         <Loader />
       </BeerCardsContainer>
     ) : null}
     {!isLoading && (
       <BeerCardsContainer>
-        {getBeerCards(beers)}
+        {getBeerCards(beers, sortByName)}
         {isAllDisplayed && (
           <Message text="Sadly, we have no more beers to show you :-(" />
         )}
