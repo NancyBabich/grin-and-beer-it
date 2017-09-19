@@ -4,7 +4,7 @@ import Card from '../components/BeerList/Card';
 
 const getBeerCards = (beers, sortByName) => {
   const beersToDisplay = sortByName
-    ? beers.sort((a, b) => {
+    ? beers.slice().sort((a, b) => {
         return a.name < b.name ? -1 : 1;
       })
     : beers;

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { ifProp } from 'styled-tools';
 
 import Colors from '../../consts/colors';
+import DisplaySettingsModal from './DisplaySettingsModal';
 import getBeerCards from '../../helpers/getBeerCards';
 import Header from './Header';
 import Loader from '../Loader';
@@ -11,13 +12,19 @@ import Message from './Message';
 const BeerList = ({
   beers,
   isAllDisplayed,
+  isDisplaySettingsModal,
   isLoading,
   isModal,
   sortByName,
-  toggleSortingSettings
+  toggleSettingsModalState
 }) => (
   <Container isModal={isModal}>
-    <Header toggleSortingSettings={toggleSortingSettings} />
+    {isDisplaySettingsModal && (
+      <DisplaySettingsModal
+        toggleSettingsModalState={toggleSettingsModalState}
+      />
+    )}
+    <Header toggleSettingsModalState={toggleSettingsModalState} />
     {isLoading && !beers.length ? <Loader initial /> : null}
     {isLoading && beers.length ? (
       <BeerCardsContainer>
@@ -43,14 +50,12 @@ const BeerCardsContainer = styled.div`
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  kl;dkglawidth: 100%;
   margin-top: 2rem;
   padding: 0 2rem 7rem 2rem;
 
   @media screen and (max-width: 950px) {
     padding: 0 0 7rem 0;
   }
-
 `;
 
 const Container = styled.div`

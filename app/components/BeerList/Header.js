@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import BurgerMenu from './BurgerMenu';
 import Colors from '../../consts/colors';
 
-const Header = ({ toggleSortingSettings }) => (
+const Header = ({ toggleSettingsModalState }) => (
   <HeaderContainer>
     <NameContainer>
       <H1>
@@ -12,7 +12,7 @@ const Header = ({ toggleSortingSettings }) => (
       </H1>
     </NameContainer>
     {/* <BurgerMenu /> */}
-    <ColoredText onClick={toggleSortingSettings}>sort by name</ColoredText>
+    <ColoredText onClick={toggleSettingsModalState}>sort by name</ColoredText>
   </HeaderContainer>
 );
 
