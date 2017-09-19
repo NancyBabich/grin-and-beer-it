@@ -34,8 +34,6 @@ const Container = styled.div`
   border-radius: 5px;
 
   &:hover {
-    //width: 300px;
-    //height: 300px;
     cursor: pointer;
   }
 
