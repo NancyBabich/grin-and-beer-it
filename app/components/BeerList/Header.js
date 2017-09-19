@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import BurgerMenu from './BurgerMenu';
 import Colors from '../../consts/colors';
 
 const Header = () => (
@@ -10,16 +11,11 @@ const Header = () => (
         <ColoredText>beer</ColoredText>guru
       </H1>
     </NameContainer>
-    <BurgerMenu>BM</BurgerMenu>
+    <BurgerMenu />
   </HeaderContainer>
 );
 
 export default Header;
-
-const BurgerMenu = styled.div`
-  display: inline-block;
-  float: right;
-`;
 
 const ColoredText = styled.span`color: ${Colors.themeColor};`;
 
