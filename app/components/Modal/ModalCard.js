@@ -67,7 +67,7 @@ const InnerContainer = styled.div`
 `;
 
 const CardContainer = styled.div`
-  width: ${ifProp('isError', '60%', '100%')};
+  width: ${ifProp('isError', '100%', '60%')};
   height: ${ifProp('isError', '100%', '90%')};
   margin-top: ${ifProp('isError', '0', '30px')};
   padding: ${ifProp('isError', '0 0 0 0', '45px 20px 20px 20px')};
@@ -78,7 +78,7 @@ const CardContainer = styled.div`
   )};
 
   @media screen and (max-width: 850px) {
-    width: 70%;
+    width: ${ifProp('isError', '100%', '70%')};
   }
 
   @media screen and (max-width: 730px) {
