@@ -1,18 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import BurgerMenu from './BurgerMenu';
+import SortIcon from './SortIcon';
 import Colors from '../../consts/colors';
 
 const Header = ({ toggleSettingsModalState }) => (
   <HeaderContainer>
-    <NameContainer>
-      <H1>
-        <ColoredText>grin</ColoredText>and<ColoredText>beer</ColoredText>it
-      </H1>
-    </NameContainer>
-    {/* <BurgerMenu /> */}
-    <ColoredText onClick={toggleSettingsModalState}>open modal</ColoredText>
+    <H1>
+      <ColoredText>grin</ColoredText>and<ColoredText>beer</ColoredText>it
+    </H1>
+    <SortIcon onClick={toggleSettingsModalState} />
   </HeaderContainer>
 );
 
@@ -35,5 +32,3 @@ const HeaderContainer = styled.div`
     padding: 7rem 0 0 0;
   }
 `;
-
-const NameContainer = styled.div`display: inline-block;`;
