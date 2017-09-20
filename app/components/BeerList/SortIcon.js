@@ -6,16 +6,22 @@ import Colors from '../../consts/colors';
 
 const SortIcon = ({ onClick, sortingOrder }) => (
   <SortIconContainer onClick={onClick}>
+    <Icon>
     <IconBar size={sortingOrder === 'desc' ? 'big' : 'small'} />
     <IconBar size="medium" />
     <IconBar size={sortingOrder === 'desc' ? 'small' : 'big'} />
+    </Icon>
   </SortIconContainer>
 );
 
 export default SortIcon;
 
+const Icon = styled.div`
+    position: absolute;
+`;
+
 const IconBar = styled.div`
-  height: 2px;
+  height: 1px;
   width: ${switchProp('size', {
     small: '40%',
     medium: '60%',
@@ -25,11 +31,9 @@ const IconBar = styled.div`
 `;
 
 const SortIconContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 25px;
-  height: 25px;
+  position: relative;
+  width: 30px;
+  height: 30px;
 
   &:hover {
     cursor: pointer;
