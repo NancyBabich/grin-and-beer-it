@@ -14,8 +14,8 @@ class BeerListContainer extends Component {
       isLoading: true,
       isDisplaySettingsModal: false,
       page: null,
-      isAsc: null,
-      sortByName: false
+      sortingCategory: null,
+      sortingOrder: null
     };
   }
 
@@ -27,6 +27,14 @@ class BeerListContainer extends Component {
   componentWillUnmount() {
     this.distributeEventListeners('remove');
   }
+
+  applyDisplaySettings = (sortingCategory, sortingOrder) => {
+    this.setState({
+      sortingCategory,
+      sortingOrder
+    });
+    this.toggleSettingsModalState();
+  };
 
   distributeEventListeners = action => {
     action === 'add'
@@ -76,7 +84,6 @@ class BeerListContainer extends Component {
 
   toggleSettingsModalState = () => {
     this.setState({
-      sortByName: !this.state.sortByName,
       isDisplaySettingsModal: !this.state.isDisplaySettingsModal
     });
   };
@@ -84,12 +91,14 @@ class BeerListContainer extends Component {
   render() {
     return (
       <BeerList
+        applyDisplaySettings={this.applyDisplaySettings}
         beers={this.state.beers}
         isAllDisplayed={this.state.isAllDisplayed}
         isDisplaySettingsModal={this.state.isDisplaySettingsModal}
         isLoading={this.state.isLoading}
         isModal={this.props.isModal}
-        sortByName={this.state.sortByName}
+        sortingCategory={this.state.sortingCategory}
+        sortingOrder={this.state.sortingOrder}
         toggleSettingsModalState={this.toggleSettingsModalState}
       />
     );

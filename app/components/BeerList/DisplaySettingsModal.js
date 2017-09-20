@@ -10,10 +10,6 @@ export default class DisplaySettingsModalContainer extends Component {
     };
   }
 
-  applyDisplaySettings = () => {
-    this.props.toggleSettingsModalState;
-  };
-
   changeDisplaySettings = (category, order) => {
     this.setState({
       category,
@@ -27,15 +23,22 @@ export default class DisplaySettingsModalContainer extends Component {
     const options = optionTypes.map(option => (
       <div key={option}>
         <div>{option}</div>
-        <div onClick={() => changeDisplaySettings(option, 'asc')}>asc</div>
-        <div onClick={() => changeDisplaySettings(option, 'desc')}>desc</div>
+        <div onClick={() => this.changeDisplaySettings(option, 'asc')}>asc</div>
+        <div onClick={() => this.changeDisplaySettings(option, 'desc')}>
+          desc
+        </div>
       </div>
     ));
+
+    const { applyDisplaySettings } = this.props;
+    const { category, order } = this.state;
 
     return (
       <ModalContainer>
         {options}
-        <ApplySettingsButton onClick={this.props.toggleSettingsModalState}>
+        <ApplySettingsButton
+          onClick={() => applyDisplaySettings(category, order)}
+        >
           OK
         </ApplySettingsButton>
         <CleanAllButton>Clean all</CleanAllButton>

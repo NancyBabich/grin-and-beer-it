@@ -10,31 +10,31 @@ import Loader from '../Loader';
 import Message from './Message';
 
 const BeerList = ({
+  applyDisplaySettings,
   beers,
   isAllDisplayed,
   isDisplaySettingsModal,
   isLoading,
   isModal,
-  sortByName,
+  sortingCategory,
+  sortingOrder,
   toggleSettingsModalState
 }) => (
   <Container isModal={isModal}>
     {isDisplaySettingsModal && (
-      <DisplaySettingsModal
-        toggleSettingsModalState={toggleSettingsModalState}
-      />
+      <DisplaySettingsModal applyDisplaySettings={applyDisplaySettings} />
     )}
     <Header toggleSettingsModalState={toggleSettingsModalState} />
     {isLoading && !beers.length ? <Loader initial /> : null}
     {isLoading && beers.length ? (
       <BeerCardsContainer>
-        {getBeerCards(beers, sortByName)}
+        {getBeerCards(beers, sortingCategory, sortingOrder)}
         <Loader />
       </BeerCardsContainer>
     ) : null}
     {!isLoading && (
       <BeerCardsContainer>
-        {getBeerCards(beers, sortByName)}
+        {getBeerCards(beers, sortingCategory, sortingOrder)}
         {isAllDisplayed && (
           <Message text="Sadly, we have no more beers to show you :-(" />
         )}

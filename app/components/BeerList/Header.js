@@ -12,7 +12,7 @@ const Header = ({ toggleSettingsModalState }) => (
       </H1>
     </NameContainer>
     {/* <BurgerMenu /> */}
-    <ColoredText onClick={toggleSettingsModalState}>sort by name</ColoredText>
+    <ColoredText onClick={toggleSettingsModalState}>open modal</ColoredText>
   </HeaderContainer>
 );
 
