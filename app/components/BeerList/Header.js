@@ -4,12 +4,17 @@ import styled from 'styled-components';
 import SortIcon from './SortIcon';
 import Colors from '../../consts/colors';
 
-const Header = ({ toggleSettingsModalState }) => (
+const Header = ({
+  sortingCategory,
+  sortingOrder,
+  toggleSettingsModalState
+}) => (
   <HeaderContainer>
     <H1>
       <ColoredText>grin</ColoredText>and<ColoredText>beer</ColoredText>it
     </H1>
-    <SortIcon onClick={toggleSettingsModalState} />
+    <SortIcon onClick={toggleSettingsModalState} sortingOrder={sortingOrder} />
+    {sortingCategory && sortingCategory}
   </HeaderContainer>
 );
 

@@ -4,11 +4,11 @@ import { switchProp } from 'styled-tools';
 
 import Colors from '../../consts/colors';
 
-const SortIcon = ({ onClick }) => (
+const SortIcon = ({ onClick, sortingOrder }) => (
   <SortIconContainer onClick={onClick}>
-    <IconBar position="top" />
-    <IconBar position="middle" />
-    <IconBar position="bottom" />
+    <IconBar size={sortingOrder === 'desc' ? 'big' : 'small'} />
+    <IconBar size="medium" />
+    <IconBar size={sortingOrder === 'desc' ? 'small' : 'big'} />
   </SortIconContainer>
 );
 
@@ -16,10 +16,10 @@ export default SortIcon;
 
 const IconBar = styled.div`
   height: 2px;
-  width: ${switchProp('position', {
-    top: '40%',
-    middle: '60%',
-    bottom: '100%'
+  width: ${switchProp('size', {
+    small: '40%',
+    medium: '60%',
+    big: '100%'
   })};
   background-color: ${Colors.themeColor};
 `;

@@ -24,7 +24,11 @@ const BeerList = ({
     {isDisplaySettingsModal && (
       <DisplaySettingsModal applyDisplaySettings={applyDisplaySettings} />
     )}
-    <Header toggleSettingsModalState={toggleSettingsModalState} />
+    <Header
+      sortingCategory={sortingCategory}
+      sortingOrder={sortingOrder}
+      toggleSettingsModalState={toggleSettingsModalState}
+    />
     {isLoading && !beers.length ? <Loader initial /> : null}
     {isLoading && beers.length ? (
       <BeerCardsContainer>
