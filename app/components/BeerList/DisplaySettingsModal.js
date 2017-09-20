@@ -5,8 +5,8 @@ export default class DisplaySettingsModalContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      category: '',
-      order: ''
+      category: null,
+      order: null
     };
   }
 
@@ -18,7 +18,7 @@ export default class DisplaySettingsModalContainer extends Component {
   };
 
   render() {
-    const optionTypes = ['name'];
+    const optionTypes = ['name', 'abv', 'ebc', 'ibu'];
 
     const options = optionTypes.map(option => (
       <div key={option}>
@@ -41,7 +41,9 @@ export default class DisplaySettingsModalContainer extends Component {
         >
           OK
         </ApplySettingsButton>
-        <CleanAllButton>Clean all</CleanAllButton>
+        <ClearAllButton onClick={() => applyDisplaySettings(null, null)}>
+          Clear all
+        </ClearAllButton>
       </ModalContainer>
     );
   }
@@ -52,7 +54,7 @@ const ApplySettingsButton = styled.div`
   height: 45px;
 `;
 
-const CleanAllButton = styled.div`
+const ClearAllButton = styled.div`
   width: 120px;
   height: 45px;
 `;
