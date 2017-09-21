@@ -3,8 +3,8 @@ import React from 'react';
 import Card from '../components/BeerList/Card';
 import sortBeers from './sortBeers';
 
-const getBeerCards = (beers, sortingCategory, sortingOrder) =>
-  sortBeers(beers, sortingCategory, sortingOrder).map(beer => (
+const getBeerCards = (beers, sortingCategory, sortingOrder) => {
+  return sortBeers(beers, sortingCategory, sortingOrder).map(beer => (
     <Card
       beerId={beer.id}
       tagline={beer.tagline}
@@ -13,5 +13,6 @@ const getBeerCards = (beers, sortingCategory, sortingOrder) =>
       key={beer.id}
     />
   ));
+};
 
 export default getBeerCards;

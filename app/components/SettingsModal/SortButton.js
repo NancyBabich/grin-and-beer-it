@@ -20,9 +20,16 @@ export default class SortButton extends Component {
   };
 
   render() {
+    const { isActive } = this.state;
+    const { buttonCategory, category, desc, order } = this.props;
+    const isSelectedOrderDesc = order === 'desc';
+    const active =
+      isActive && buttonCategory === category && desc === isSelectedOrderDesc;
+    console.log(desc);
+    console.log(isSelectedOrderDesc);
     return (
       <SortButtonContainer onClick={this.handleClick}>
-        <SortIcon active={this.state.isActive} desc={this.props.desc} />
+        <SortIcon active={active} desc={desc} />
       </SortButtonContainer>
     );
   }

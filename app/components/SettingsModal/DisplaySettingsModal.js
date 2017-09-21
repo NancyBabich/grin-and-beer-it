@@ -16,8 +16,20 @@ const DisplaySettingsModal = ({
   const options = optionTypes.map(option => (
     <Option key={option}>
       <span>{option}</span>
-      <SortButton onClick={() => changeDisplaySettings(option, 'asc')} />
-      <SortButton desc onClick={() => changeDisplaySettings(option, 'desc')} />
+      <SortButton
+        buttonCategory={option}
+        category={category}
+        desc={false}
+        onClick={() => changeDisplaySettings(option, 'asc')}
+        order={order}
+      />
+      <SortButton
+        buttonCategory={option}
+        category={category}
+        desc
+        onClick={() => changeDisplaySettings(option, 'desc')}
+        order={order}
+      />
     </Option>
   ));
 
