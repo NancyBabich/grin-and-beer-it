@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { ifProp } from 'styled-tools';
 
 import Colors from '../../consts/colors';
-import DisplaySettingsModal from './DisplaySettingsModal';
+import DisplaySettingsModalContainer from '../../containers/DisplaySettingsModalContainer';
 import getBeerCards from '../../helpers/getBeerCards';
 import Header from './Header';
 import Loader from '../Loader';
@@ -22,7 +22,9 @@ const BeerList = ({
 }) => (
   <Container isModal={isModal}>
     {isDisplaySettingsModal && (
-      <DisplaySettingsModal applyDisplaySettings={applyDisplaySettings} />
+      <DisplaySettingsModalContainer
+        applyDisplaySettings={applyDisplaySettings}
+      />
     )}
     <Header
       sortingCategory={sortingCategory}
