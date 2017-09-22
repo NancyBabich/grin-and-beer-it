@@ -14,7 +14,7 @@ const Header = ({
       <ColoredText>grin</ColoredText>and<ColoredText>beer</ColoredText>it
     </H1>
     <SortIcon onClick={toggleSettingsModalState} sortingOrder={sortingOrder} />
-    {sortingCategory && sortingCategory}
+    {sortingCategory && <SortInfo>sorted by {sortingCategory}</SortInfo>}
   </HeaderContainer>
 );
 
@@ -36,4 +36,9 @@ const HeaderContainer = styled.div`
   @media screen and (max-width: 995px) {
     padding: 7rem 0 0 0;
   }
+`;
+
+const SortInfo = styled.span`
+  color: ${Colors.themeColor};
+  font-family: 'Nunito';
 `;

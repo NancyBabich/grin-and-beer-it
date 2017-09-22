@@ -1,62 +1,44 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ifProp } from 'styled-tools';
 
 import Colors from '../../consts/colors';
-import SortButton from './SortButton';
+import SortingOptions from './SortingOptions';
 
 const DisplaySettingsModal = ({
   applyDisplaySettings,
   category,
   changeDisplaySettings,
   order
-}) => {
-  const optionTypes = ['name', 'abv', 'ebc', 'ibu'];
-
-  const options = optionTypes.map(option => (
-    <Option key={option}>
-      <span>{option}</span>
-      <SortButton
-        buttonCategory={option}
+}) => (
+  <ModalContainer>
+    <Modal>
+      <Heading>Sort beers by</Heading>
+      <SortingOptions
         category={category}
-        desc={false}
-        onClick={() => changeDisplaySettings(option, 'asc')}
+        changeDisplaySettings={changeDisplaySettings}
         order={order}
       />
-      <SortButton
-        buttonCategory={option}
-        category={category}
-        desc
-        onClick={() => changeDisplaySettings(option, 'desc')}
-        order={order}
-      />
-    </Option>
-  ));
-
-  return (
-    <ModalContainer>
-      <Modal>
-        <Heading>Sort beers by</Heading>
-        {options}
-        <StyledButton onClick={() => applyDisplaySettings(category, order)}>
-          OK
-        </StyledButton>
-        <StyledButton onClick={() => applyDisplaySettings(null, null)}>
-          Clear all
-        </StyledButton>
-      </Modal>
-    </ModalContainer>
-  );
-};
+      <StyledButton onClick={() => applyDisplaySettings(category, order)}>
+        ok
+      </StyledButton>
+      <StyledButton onClick={() => applyDisplaySettings(null, null)}>
+        clear all
+      </StyledButton>
+    </Modal>
+  </ModalContainer>
+);
 
 export default DisplaySettingsModal;
 
 const Heading = styled.div`text-transform: uppercase;`;
 
 const Modal = styled.div`
-  width: 80%;
-  height: 80%;
+  width: 50%;
+  height: 65%;
   background-color: ${Colors.white};
+  font-family: 'Nunito';
+  color: ${Colors.darkGray};
+  padding-top: 20px;
 `;
 
 const ModalContainer = styled.div`
@@ -67,22 +49,23 @@ const ModalContainer = styled.div`
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
   display: flex;
-  //align-items: center;
+  align-items: center;
   justify-content: center;
+  text-align: center;
 `;
 
-const Option = styled.div`width: 100%;`;
-
 const StyledButton = styled.div`
-  width: 120px;
-  height: 45px;
+  width: 50%;
+  height: 30px;
   background-color: ${Colors.themeColor};
   color: ${Colors.white};
   text-align: center;
-  line-height: 45px;
-  margin-bottom: 5px;
+  line-height: 30px;
+  margin: 0 auto 5px auto;
+  text-transform: uppercase;
 
   &:hover {
     cursor: pointer;
+    background-color: ${Colors.themeColorLight};
   }
 `;
