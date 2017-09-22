@@ -1,4 +1,4 @@
-# grin-and-beer-it
+# grin-and-beer-it :beer:
 The app displays various beers from [Punk API](https://punkapi.com/). So far, the user can view all available beers and read info on specific products by clicking on a beer card and sort beers by name, ebv, or ibu. New features are coming soon. Eventually, the app is going to become a PWA, so exciting things are coming! Remember to check for updates!
 
 ## Using
